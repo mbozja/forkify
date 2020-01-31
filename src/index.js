@@ -1,6 +1,7 @@
 import "./styles.scss";
-import str from './js/models/Search.js';
-import { add, multiply, ID } from './js/views/searchView.js';
+// Lecture ES6 modules
+import str from './js/models/Search';
+import { add as a, multiply as m, ID } from './js/views/searchView';
 
 /*
 
@@ -22,7 +23,9 @@ console.log(myVar);
 console.log(myVar_2); 
 
 // Lecture ES6 modules
-console.log(`Using imported functions! ${add(ID, 2)} and ${multiply(3,5)}. ${str}`);
-console.log("a dela? : ", str);
+//console.log(`Using imported functions! ${add(ID, 2)} and ${multiply(3,5)}. ${str}`); ali pa:
+console.log(`Using imported functions! ${a(ID, 2)} and ${m(3,5)}. ${str}`);
+
+//console.log("a dela? : ", str);
 
 
