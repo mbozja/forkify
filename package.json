@@ -30,6 +30,7 @@
     "style-loader": "1.0.1"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "babel-polyfill": "6.26.0"
   }
 }
