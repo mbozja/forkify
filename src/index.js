@@ -42,6 +42,8 @@ console.log(myVar_2);
 async function getResults(query) {
     const res = await axios(`https://forkify-api.herokuapp.com/api/search?&q=${query}`); 
     console.log(res);
+    const recipes = res.data.recipes;
+    console.log(recipes);
 }
 getResults('pizza'); 
 
