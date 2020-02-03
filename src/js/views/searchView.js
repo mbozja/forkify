@@ -9,19 +9,24 @@ export const getInput = () => elements.searchInput.value;
 const renderRecipe = recipe => {
     const markup = `
         <li>
-            <a class="results__link results__link--active" href="#23456">
+            <a class="results__link" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
-                    <img src="assets/img/test-1.jpg" alt="Test">
+                    <img src="${recipe.image_url}" alt="${recipe.title}">
                 </figure>
                 <div class="results__data">
-                    <h4 class="results__name">Pasta with Tomato ...</h4>
-                    <p class="results__author">The Pioneer Woman</p>
+                    <h4 class="results__name">${recipe.title}</h4>
+                    <p class="results__author">${recipe.publisher}</p>
                 </div>
             </a>
         </li>
     `;
+    elements.searchResList.insertAdjacentHTML('beforeend', markup);
 }
 
 export const renderResults = recipes => {
-    recipes.foreach(renderRecipe);
+    if (recipes) {
+        recipes.forEach(renderRecipe);
+    } else {
+        console.log("recipes is not defined, look: ", recipes);
+    }
 }
