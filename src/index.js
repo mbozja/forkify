@@ -49,7 +49,6 @@ const state = {};
 const controlSearch = async () => {
     // 1) Get query from view
     const query = searchView.getInput();
-    console.log(query);
 
     if (query) {
         // 2) New search object and add to state
@@ -57,11 +56,13 @@ const controlSearch = async () => {
 
         // 3) Prepare UI for results
 
-        // 4) Search for recipes
+        // 4) Search for recipes. Method "getResults" will store recepies into property "recipes".
         await state.search.getResults();
 
-        // 5) Render results on UI
-        console.log(state.search.result);
+        // 5) Render results on UI. Pass property "recepies" that is stored in the object "state.search".  
+        //console.log("search objekt query (tist kar si vpisala): ", state.search.query); 
+        //console.log("search objekt recipies (tist kar vrne api in more bit zrisan na strani): ", state.search.recipes);  
+        searchView.renderResults(state.search.recipes);// (zbris <- ta komentar ko bos razumela :D (in popravla :))) // Search results are available under "state.search.recipes".
     }
 }
 
@@ -71,7 +72,7 @@ elements.searchForm.addEventListener('submit', e => {
 });
 
 const search = new Search('pizza');
-console.log(search);
+console.log(search); // lej tuki si izpisala search objekt, poglej v consolo kaj vse vsebuje ta objekt (hint: ne vsebuje result ampak ?____?) 
 search.getResults();
 
 
