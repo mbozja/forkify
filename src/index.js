@@ -6,6 +6,8 @@ import "./styles.scss";
 
 // Project imports:
 import Search from './js/models/Search';
+import * as searchView from './js/views/searchView';
+import { elements } from './js/views/base';
 
 /*
 
@@ -46,7 +48,8 @@ const state = {};
 
 const controlSearch = async () => {
     // 1) Get query from view
-    const query = 'pizza' //TODO
+    const query = searchview.getInput();
+    console.log(query);
 
     if (query) {
         // 2) New search object and add to state
@@ -62,7 +65,7 @@ const controlSearch = async () => {
     }
 }
 
-document.querySelector('search').addEventListener('submit', e => {
+elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
