@@ -5,7 +5,7 @@ import "./styles.scss";
 //import * as searchView from './js/views/searchView';
 
 // Project imports:
-import axios from 'axios';
+import Search from './js/models/Search';
 
 /*
 
@@ -36,16 +36,9 @@ console.log(myVar_2);
 
 
 // Project code:
-/**
- * This method accepts parameter "query".
- */
-async function getResults(query) {
-    const res = await axios(`https://forkify-api.herokuapp.com/api/search?&q=${query}`); 
-    console.log(res);
-    const recipes = res.data.recipes;
-    console.log(recipes);
-}
-getResults('pizza'); 
+const search = new Search('pizza');
+console.log(search);
+search.getResults();
 
 
 
