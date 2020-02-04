@@ -7,7 +7,7 @@ import "./styles.scss";
 // Project imports:
 import Search from './js/models/Search';
 import * as searchView from './js/views/searchView';
-import { elements } from './js/views/base';
+import { elements, renderLoader, clearLoader } from './js/views/base';
 
 /*
 
@@ -57,6 +57,7 @@ const controlSearch = async () => {
         // 3) Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
+        renderLoader(elements.searchRes);
 
         // 4) Search for recipes. Method "getResults" will store recepies into property "recipes".
         await state.search.getResults();
@@ -64,7 +65,8 @@ const controlSearch = async () => {
         // 5) Render results on UI. Pass property "recepies" that is stored in the object "state.search".  
         //console.log("search objekt query (tist kar si vpisala): ", state.search.query); 
         //console.log("search objekt recipies (tist kar vrne api in more bit zrisan na strani): ", state.search.recipes);  
-        searchView.renderResults(state.search.recipes);// (zbris <- ta komentar ko bos razumela :D (in popravla :))) // Search results are available under "state.search.recipes".
+        clearLoader();
+        searchView.renderResults(state.search.recipes);
     }
 }
 
