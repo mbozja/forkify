@@ -55,10 +55,17 @@ const renderRecipe = recipe => {
     elements.searchResList.insertAdjacentHTML('beforeend', markup);
 };
 
-export const renderResults = recipes => {
+const renderButtons = (page) => {
+    
+};
+
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
     if (recipes) {
-        recipes.forEach(renderRecipe);
+        const start = (page - 1) * resPerPage;
+        const end = page * resPerPage;
+
+        recipes.slice(start, end).forEach(renderRecipe);
     } else {
-        console.log("recipes is not defined, look: ", recipes);
+        console.log("Recipes is not defined, look: ", recipes);
     }
 };
