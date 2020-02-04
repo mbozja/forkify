@@ -75,26 +75,13 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
+/*
 const search = new Search('pizza');
 console.log(search); // lej tuki si izpisala search objekt, poglej v consolo kaj vse vsebuje ta objekt (hint: ne vsebuje result ampak ?____?) 
 search.getResults();
+*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+elements.searchResPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline')
+    Console.length(btn);
+});
