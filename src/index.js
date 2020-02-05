@@ -6,6 +6,7 @@ import "./styles.scss";
 
 // Project imports:
 import Search from './js/models/Search';
+import Recipe from './js/models/Recipe';
 import * as searchView from './js/views/searchView';
 import { elements, renderLoader, clearLoader } from './js/views/base';
 
@@ -46,6 +47,9 @@ console.log(myVar_2);
  */
 const state = {};
 
+/** 
+ * SEARCH ONTROLLER 
+ */
 const controlSearch = async () => {
     // 1) Get query from view
     const query = searchView.getInput();
@@ -89,3 +93,9 @@ elements.searchResPages.addEventListener('click', e => {
         searchView.renderResults(state.search.recipes, goToPage);
     }
 });
+
+
+/** 
+ * RECIPE ONTROLLER 
+ */
+const r = new Recipe();
