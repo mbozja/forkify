@@ -83,5 +83,8 @@ search.getResults();
 
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline')
-    Console.length(btn);
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        console.log(goToPage);
+    }
 });
