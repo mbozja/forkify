@@ -98,4 +98,34 @@ elements.searchResPages.addEventListener('click', e => {
 /** 
  * RECIPE ONTROLLER 
  */
-const r = new Recipe();
+const controlRecipe = async () => {
+    // Get ID from url
+    const id = window.location.hash.replace('#', '');
+    console.log(id);
+
+    if (id) {
+        // Prepare Ui for changes
+
+        // Create new recipe object
+        state.recipe = new Recipe(id);
+
+        try {
+            // Get recipe data
+            await state.recipe.getRecipe();
+            // Calculate servings and time
+            state.recipe.calcTime();
+            state.recipe.calcServings();
+
+            // Render recipe
+            console.log(state.recipe);
+
+        } catch(err) {
+            alert('Error processing recipe');
+        }
+    }
+}
+
+//window.addEventListener('hashchange', controlRecipe);
+//window.addEventListener('load', controlRecipe);
+
+ ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
