@@ -63,14 +63,20 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderLoader(elements.searchRes);
 
-        // 4) Search for recipes. Method "getResults" will store recepies into property "recipes".
-        await state.search.getResults();
+        try {
+            // 4) Search for recipes. Method "getResults" will store recepies into property "recipes".
+            await state.search.getResults();
 
-        // 5) Render results on UI. Pass property "recepies" that is stored in the object "state.search".  
-        //console.log("search objekt query (tist kar si vpisala): ", state.search.query); 
-        //console.log("search objekt recipies (tist kar vrne api in more bit zrisan na strani): ", state.search.recipes);  
-        clearLoader();
-        searchView.renderResults(state.search.recipes);
+            // 5) Render results on UI. Pass property "recepies" that is stored in the object "state.search".  
+            //console.log("search objekt query (tist kar si vpisala): ", state.search.query); 
+            //console.log("search objekt recipies (tist kar vrne api in more bit zrisan na strani): ", state.search.recipes);  
+            clearLoader();
+            searchView.renderResults(state.search.recipes);
+        } catch(err) {
+            alert('Something wrong with the search...');
+            clearLoader();
+        }
+        
     }
 }
 
@@ -120,7 +126,7 @@ const controlRecipe = async () => {
             console.log(state.recipe);
 
         } catch(err) {
-            alert('Error processing recipe');
+            alert('Error processing recipe!');
         }
     }
 }
