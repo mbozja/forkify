@@ -1,19 +1,28 @@
 import { elements } from "./base";
 
-const createIngredient = ingredient => `
-    <li class="recipe__item">
-        <svg class="recipe__icon">
-            <use href="img/icons.svg#icon-check"></use>
-        </svg>
-        <div class="recipe__count">${formatCount(ingredient.count)}</div>
-        <div class="recipe__ingredient">
-            <span class="recipe__unit">${ingredient.unit}</span>
-            ${ingredient.ingredient}
-        </div>
-    </li>
-`;
+export const clearRecipe = () => {
+    elements.recipe.innerHTML = '';
+};
 
-export const renderRecipe = recipe => {
+const createIngredient = ingredient => {
+    
+    console.log(ingredient);
+    
+    return `
+            <li class="recipe__item">
+                <svg class="recipe__icon">
+                    <use href="assets/img/icons.svg#icon-check"></use>
+                </svg>
+                <div class="recipe__count">${ingredient.count}</div>
+                <div class="recipe__ingredient">
+                    <span class="recipe__unit">${ingredient.unit}</span>
+                    ${ingredient.ingredient}
+                </div>
+            </li>
+        `;
+};
+
+export const renderRecipe = recipe => { 
     const markup = `
         <figure class="recipe__fig">
                 <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
@@ -60,7 +69,7 @@ export const renderRecipe = recipe => {
 
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
-                ${recipe.ingredients.map(el => createIngredient(el))}
+                ${recipe.ingredients.map(el => createIngredient(el)).join('')}
                     
             </ul>
 
@@ -78,7 +87,7 @@ export const renderRecipe = recipe => {
                 This recipe was carefully designed and tested by
                 <span class="recipe__by">${recipe.author}</span>. Please check out directions at their website.
             </p>
-            <a class="btn-small recipe__btn" href="${}recipe.url" target="_blank">
+            <a class="btn-small recipe__btn" href="${recipe.url}recipe.url" target="_blank">
                 <span>Directions</span>
                 <svg class="search__icon">
                     <use href="assets/img/icons.svg#icon-triangle-right"></use>
