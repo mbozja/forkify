@@ -22,7 +22,7 @@ export default class Recipe {
     calcTime() {
         // Asumming that we need 15 min for each ingredients
         const numIng = this.ingredients.length;
-        const periods = Math.ceil(numIng / 39);
+        const periods = Math.ceil(numIng / 3);
         this.time = periods * 15;
     }
 
@@ -53,10 +53,10 @@ export default class Recipe {
                 // There is a 
                 // Ex. 4 1/2 cups, arrCount is [2, 1/2] --Y eval("4+1/2") --> 4.5
                 // Ex. 4 cups, arrCount is [4]
-                const arrcount = arrIng.slice(0, unitIndex); 
+                const arrCount = arrIng.slice(0, unitIndex); 
 
                 let count;
-                if (arrcount.length === 1) {
+                if (arrCount.length === 1) {
                     count = eval(arrIng[0].replace('-','+'));
                 } else {
                     count = eval(arrIng.slice(0, unitIndex).join('+'));
@@ -74,17 +74,17 @@ export default class Recipe {
                     count: parseInt(arrIng[0], 10),
                     unit: '',
                     ingredient: arrIng.slice(1).join(' ')
-                }
+                };
             } else if (unitIndex === -1) {
                 // There is NO unit and NO number in 1st position
                 objIng = {
                     count: 1,
                     unit: '',
                     ingredient
-                }
+                };
             }
 
-            return ingredient;
+            return objIng;
 
         });
         this.ingredients = newIngredients;
