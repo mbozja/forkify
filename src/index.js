@@ -8,6 +8,7 @@ import "./styles.scss";
 import Search from './js/models/Search';
 import Recipe from './js/models/Recipe';
 import * as searchView from './js/views/searchView';
+import * as recipeView from './js/views/recipeView';
 import { elements, renderLoader, clearLoader } from './js/views/base';
 
 /*
