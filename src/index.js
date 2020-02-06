@@ -66,6 +66,7 @@ const controlSearch = async () => {
         try {
             // 4) Search for recipes. Method "getResults" will store recepies into property "recipes".
             await state.search.getResults();
+            
 
             // 5) Render results on UI. Pass property "recepies" that is stored in the object "state.search".  
             //console.log("search objekt query (tist kar si vpisala): ", state.search.query); 
@@ -84,6 +85,8 @@ elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
+
+
 
 /*
 const search = new Search('pizza');
@@ -116,8 +119,11 @@ const controlRecipe = async () => {
         state.recipe = new Recipe(id);
 
         try {
-            // Get recipe data
+            // Get recipe data and parse ingredients
             await state.recipe.getRecipe();
+            console.log(state.recipe.ingredients);
+            state.recipe.parseIngredients();
+
             // Calculate servings and time
             state.recipe.calcTime();
             state.recipe.calcServings();
