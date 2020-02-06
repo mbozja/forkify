@@ -114,7 +114,9 @@ const controlRecipe = async () => {
     console.log(id);
 
     if (id) {
-        // Prepare Ui for changes
+        // Prepare UI for changes
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
 
         // Create new recipe object
         state.recipe = new Recipe(id);
@@ -130,9 +132,11 @@ const controlRecipe = async () => {
             state.recipe.calcServings();
 
             // Render recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
 
         } catch(err) {
+            console.log("error: ", err);
             alert('Error processing recipe!');
         }
     }
@@ -142,3 +146,4 @@ const controlRecipe = async () => {
 //window.addEventListener('load', controlRecipe);
 
  ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+ 
