@@ -7,6 +7,7 @@ import "./styles.scss";
 // Project imports:
 import Search from './js/models/Search';
 import Recipe from './js/models/Recipe';
+import List from './js/models/List';
 import * as searchView from './js/views/searchView';
 import * as recipeView from './js/views/recipeView';
 import { elements, renderLoader, clearLoader } from './js/views/base';
@@ -127,7 +128,7 @@ const controlRecipe = async () => {
         try {
             // Get recipe data and parse ingredients
             await state.recipe.getRecipe();
-            console.log(state.recipe.ingredients);
+            //console.log(state.recipe.ingredients);
             state.recipe.parseIngredients();
 
             // Calculate servings and time
@@ -163,5 +164,6 @@ const controlRecipe = async () => {
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
     }
-    console.log(state.recipe);
  });
+
+ window.l  = new List();
