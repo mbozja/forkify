@@ -8,11 +8,12 @@ import "./styles.scss";
 import Search from './js/models/Search';
 import Recipe from './js/models/Recipe';
 import List from './js/models/List';
+import Likes from "./js/models/Likes";
 import * as searchView from './js/views/searchView';
 import * as recipeView from './js/views/recipeView';
 import * as listView from './js/views/listView';
+import * as likesView from './js/views/likesView';
 import { elements, renderLoader, clearLoader } from './js/views/base';
-import Likes from "./js/models/Likes";
 
 /*
 
@@ -204,6 +205,7 @@ const controlLike = () => {
         )
 
         // Toggle the like button
+        likesView.toggleLikeBtn(true);
 
         // Add like ti UI list
         console.log(state.likes);
@@ -214,6 +216,7 @@ const controlLike = () => {
         state.likes.deleteLike(currentID);
 
         // Toggle the like button
+        likesView.toggleLikeBtn(falses);
 
         // Add like ti UI list
         console.log(state.likes);
