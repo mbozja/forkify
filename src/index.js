@@ -210,8 +210,8 @@ const controlLike = () => {
         // Toggle the like button
         likesView.toggleLikeBtn(true);
 
-        // Add like ti UI list
-        console.log(state.likes);
+        // Add like to UI list
+        likesView.renderLike(newLike);
 
     // User HAS liked current recipe
     } else {
@@ -221,10 +221,25 @@ const controlLike = () => {
         // Toggle the like button
         likesView.toggleLikeBtn(falses);
 
-        // Add like ti UI list
-        console.log(state.likes);
+        // Add like to UI list
+        likesView.deleteLike(currentID);
     }
-}
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+};
+
+// Restore liked recipes on page load
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+
+    // Restore likes
+    state.likes.readStorage();
+
+    // Toggle like menu button
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+    // Render the existing likes
+    state.likes.likes.forEach(like => likesView.renderLike(like));
+})
 
 
  // Handling recipe button clicks
